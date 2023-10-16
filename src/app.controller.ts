@@ -1,4 +1,10 @@
-import { Controller, Get, Param } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  HttpException,
+  HttpStatus,
+  Param,
+} from '@nestjs/common';
 import { AppService, UserData } from './app.service';
 
 @Controller()
@@ -12,6 +18,8 @@ export class AppController {
 
   @Get(':name')
   getUser(@Param('name') name: string) {
-    return this.appService.getSingleUser(name);
+    const user = this.appService.getSingleUser(name);
+    if (user) return user;
+    throw new HttpException('User not found', HttpStatus.NOT_FOUND);
   }
 }
