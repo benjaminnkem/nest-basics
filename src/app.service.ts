@@ -11,6 +11,7 @@ export class AppService {
     { name: 'Benjamin Nkem', age: 18 },
     { name: 'Tochi Junior', age: 20 },
     { name: 'Michael', age: 20 },
+    { name: 'Jude', age: 20 },
   ];
 
   getUsers(): UserData[] {
