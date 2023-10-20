@@ -6,26 +6,22 @@ export class CustomersService {
     {
       id: 1,
       email: 'foo@example.com',
-      createdAt: new Date(),
+      name: 'Benjamin Nkem',
     },
     {
       id: 2,
       email: 'adam@example.com',
-      createdAt: new Date(),
+      name: 'Martha John',
     },
     {
       id: 3,
       email: 'sola@example.com',
-      createdAt: new Date(),
+      name: 'Judas Iscariot',
     },
   ];
 
-  findCustomer(id: number) {
-    const user = this.users.filter((user) => user.id === id)[0];
-    console.log(
-      user,
-      this.users.filter((user) => user.id === id),
-    );
+  findCustomerById(id: number) {
+    const user = this.users.find((user) => user.id === id);
 
     return user;
   }
