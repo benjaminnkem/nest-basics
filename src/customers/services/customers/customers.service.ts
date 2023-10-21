@@ -22,6 +22,10 @@ export class CustomersService {
     },
   ];
 
+  getAllCustomers() {
+    return this.users;
+  }
+
   findCustomerById(id: number) {
     const user = this.users.find((user) => user.id === id);
 

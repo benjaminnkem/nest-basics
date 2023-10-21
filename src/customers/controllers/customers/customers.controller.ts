@@ -17,7 +17,12 @@ import { CustomersService } from 'src/customers/services/customers/customers.ser
 export class CustomersController {
   constructor(private readonly appService: CustomersService) {}
 
-  @Get(':id')
+  @Get()
+  getAllUsers() {
+    return this.appService.getAllCustomers();
+  }
+
+  @Get('/search/:id')
   getCustomer(@Param('id', ParseIntPipe) id: number) {
     const customer = this.appService.findCustomerById(id);
     if (customer) {
@@ -30,6 +35,6 @@ export class CustomersController {
   @Post('create')
   @UsePipes(ValidationPipe)
   createCustomer(@Body() createUserDto: CreateCustomerDto) {
-    console.log(createUserDto);
+    this.appService.createCustomer(createUserDto);
   }
 }
